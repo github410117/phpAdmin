@@ -13,11 +13,11 @@ return [
     // 数据库类型
     'type'            => 'mysql',
     // 服务器地址
-    'hostname'        => '123.207.55.168',
+    'hostname'        => '120.79.49.167',
     // 数据库名
-    'database'        => 'jcl',
+    'database'        => 'demo',
     // 用户名
-    'username'        => 'root',
+    'username'        => 'demo',
     // 密码
     'password'        => '123456',
     // 端口
