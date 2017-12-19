@@ -1,10 +1,15 @@
 <?php
-namespace app\index\controller;
+namespace app\api\controller;
 
-use GuzzleHttp\Client;
+
+use think\Controller;
 use think\Db;
 
-class Index
+header('content-type:application:json;charset=utf8');
+header('Access-Control-Allow-Origin:*');   // 指定允许其他域名访问
+header('Access-Control-Allow-Headers:x-requested-with,content-type');// 响应头设置
+
+class UserInfo extends Controller
 {
     public function index()
     {

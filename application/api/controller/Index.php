@@ -1,8 +1,9 @@
 <?php
-namespace app\index\controller;
+namespace app\api\controller;
 
 use GuzzleHttp\Client;
 use think\Db;
+
 
 class Index
 {
