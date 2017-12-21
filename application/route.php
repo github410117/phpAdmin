@@ -12,7 +12,8 @@
 
 use think\Route;
 
-Route::get('userinfo','api/userinfo');
+Route::resource('infos','api/userinfo');
+//Route::get('index','api/index');
 //return [
 //    '__pattern__' => [
 //        'name' => '\w+',
