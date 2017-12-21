@@ -12,7 +12,7 @@
 
 use think\Route;
 
-Route::resource('infos','api/userinfo');
+Route::resource('api/infos','api/userinfo');
 //Route::get('index','api/index');
 //return [
 //    '__pattern__' => [
