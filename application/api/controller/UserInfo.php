@@ -4,10 +4,8 @@ namespace app\api\controller;
 
 use think\Controller;
 use think\Db;
+use think\Request;
 
-header('content-type:application:json;charset=utf8');
-header('Access-Control-Allow-Origin:*');   // 指定允许其他域名访问
-header('Access-Control-Allow-Headers:x-requested-with,content-type');// 响应头设置
 
 class UserInfo extends Controller
 {
@@ -25,4 +23,11 @@ class UserInfo extends Controller
         return model('Demo')->where('id',$id)->find();
     }
 
+    public function update($id) {
+        $param = input('put.');
+        unset($param['Uid']);
+        $as = array_change_key_case($param,CASE_LOWER);
+        $result = model('Demo')->allowField(true)->where('id',$id)->update($as);
+        return $result;
+    }
 }
