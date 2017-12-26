@@ -54,7 +54,7 @@ trait Send {
      * @return array
      */
     private function creatSendResponse($error = 0, $message = 'success', $data = [], $options = []) {
-        $responseData['error'] = (int)$error;
+        $responseData['state'] = (int)$error;
         $responseData['message'] = (string)$message;
         if (!empty($data)) $responseData['data'] = $data;
         $responseData = array_merge($responseData, $options);

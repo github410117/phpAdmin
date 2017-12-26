@@ -121,7 +121,9 @@ class Api extends Controller
      * 检测客户端是否有权限调用接口
      */
     public function checkAuth() {
-
+        $baseAuth = Factory::getInstance(Oauth::class);
+        $clientInfo = $baseAuth->authenticate();
+        return $clientInfo;
     }
 
     /**
