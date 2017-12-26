@@ -13,6 +13,8 @@
 use think\Route;
 
 Route::resource('api/infos','api/userinfo');
+Route::resource('api/login','api/login');
+Route::miss('Error/index');//注册一个错误访问的路由.如果访问的Api没有对应的路径，则返回Error控制器中index的返回值
 //Route::get('index','api/index');
 //return [
 //    '__pattern__' => [
