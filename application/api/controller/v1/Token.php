@@ -21,8 +21,8 @@ class Token extends Controller
 	public static $rule_mobile = [
         'app_key'     =>  'require',
         'mobilephone' =>  'require',
-        'nonce'       =>  'require',
-        'timestamp'   =>  'require',
+//        'nonce'       =>  'require',
+//        'timestamp'   =>  'require',
         'captcha'     =>  'number'   //手机验证码
     ];
     //微信端请求验证规则
@@ -112,10 +112,10 @@ class Token extends Controller
 			return $this->returnmsg(405,$result);
 		}
         //====调用模型验证app_key是否正确，这里注释，请开发者自行建表======
-		// $result = Oauth::get(function($query){
-		// 	$query->where('app_key', $this->request->param('app_key'));
-		// 	$query->where('expires_in','>' ,time());
-		// });
+		 $result = Oauth::get(function($query){
+		 	$query->where('app_key', $this->request->param('app_key'));
+		 	$query->where('expires_in','>' ,time());
+		 });
 		if(empty($result)){
 			return $this->returnmsg(401,'App_key does not exist or has expired. Please contact management');
 		}

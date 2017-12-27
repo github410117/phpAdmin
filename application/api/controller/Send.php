@@ -32,10 +32,11 @@ trait Send {
     /**
      * 失败的响应
      */
-    public function sendError($error = 400, $message = 'error', $code = 400, $data = [], $headers = [], $options = []) {
-        return $this->response($this.$this->creatSendResponse($error,$message,$data,$options), $code, $headers);
+    public function sendError($error = 400, $message = 'error', $code = 200, $data = [], $headers = [], $options = []) {
+        return $this->response($this->creatSendResponse($error,$message,$data,$options), $code, $headers);
 
     }
+
 
 
     /**
@@ -54,7 +55,7 @@ trait Send {
      * @return array
      */
     private function creatSendResponse($error = 0, $message = 'success', $data = [], $options = []) {
-        $responseData['state'] = (int)$error;
+        $responseData['status'] = (int)$error;
         $responseData['message'] = (string)$message;
         if (!empty($data)) $responseData['data'] = $data;
         $responseData = array_merge($responseData, $options);
@@ -102,7 +103,7 @@ trait Send {
      */
     public function returnmsg($code = '400', $message = '', $data = [], $header = []) {
         http_response_code($code);
-        $return['code'] = $code;
+        $return['status'] = $code;
         $return['message'] = $message;
         if (!empty($data)) $return['data'] = $data;
 

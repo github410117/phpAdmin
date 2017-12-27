@@ -16,6 +16,10 @@ class Api extends Controller
 {
     use Send;
 
+    public $successCode = 200;//成功状态码
+    public $paramErrCode = 30;//参数错误状态码
+    public $errorCode = 500;//错误状态码
+
     /**
      * 对应操作
      * @var array
@@ -37,10 +41,10 @@ class Api extends Controller
     public $restMethodList = 'get|post|put|delete|patch|head|options';
 
     /**
-     * 是否验证,默认不验证
+     * 是否验证,默认验证
      * @var bool
      */
-    public $apiAuth = false;
+    public $apiAuth = true;
 
     protected $request;
 
@@ -85,7 +89,8 @@ class Api extends Controller
     {
         $this->request = Request::instance();
         $this->init();//检查资源类型
-        $this->clientInfo = $this->checkAuth();//接口权限检查
+        if ($this->apiAuth) $this->clientInfo = $this->checkAuth();//接口权限检查
+
     }
 
     /**
@@ -113,7 +118,7 @@ class Api extends Controller
         $this->method = $method;
 
         if (stripos($this->restMethodList, $method) === false) {//如果没有检测到该方法，返回错误,提示不允许此方法
-            return self::returnmsg(405,'不支持该请求方法',[],["Access-Control-Allow-Origin" => $this->restMethodList]);
+            return self::returnmsg(405,'不支持该请求方法,请使用' . $this->restMethodList . '请求',[],["Access-Control-Allow-Origin" => $this->restMethodList]);
         }
     }
 

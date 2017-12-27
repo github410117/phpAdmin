@@ -12,6 +12,8 @@
 
 use think\Route;
 Route::resource(':version/login','api/:version.Login');
+Route::resource(':version/user','api/:version.User');   //注册一个资源路由，对应restful各个方法
+Route::resource(':version/register','api/:version.Register');
 Route::resource('api/infos','api/userinfo');
 Route::rule(':version/token/mobile','api/:version.Token/mobile');
 //Route::resource('api/login','api/login');

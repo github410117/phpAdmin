@@ -11,7 +11,7 @@ class Oauth extends Model{
 	/**
 	 * 表名,
 	 */
-	protected $table = 'cfg_oauth';
+	protected $table = 'xh_appkey';
 
 	/**
 	 * 只读

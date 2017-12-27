@@ -64,6 +64,7 @@ class Oauth
                 return $clientInfo;
             }
         } catch (Exception $e) {
+
             return $this->returnmsg(402,'Invalid1 authentication credentials.');
         }
     }
